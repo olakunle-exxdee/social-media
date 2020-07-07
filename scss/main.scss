@@ -1,0 +1,144 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 100%;
+  margin: 0;
+  line-height: 1.5;
+  padding: 0;
+}
+img {
+  width: 100%;
+  display: block;
+}
+
+$color1: #4e5150;
+$color2: #a9a9a9;
+$color3: #e5e5e5;
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.profile {
+  margin: 2em 0;
+  &__img {
+    display: grid;
+    place-items: center;
+    img {
+      width: 20%;
+      border-radius: 20px;
+      max-width: 30%;
+    }
+  }
+
+  &__name {
+    text-align: center;
+    p:nth-of-type(1) {
+      font-size: 14px;
+      color: $color1;
+    }
+    p:nth-of-type(2) {
+      font-size: 10px;
+      color: $color2;
+    }
+  }
+
+  &__following {
+    text-align: center;
+
+    .post {
+      position: relative;
+      background: $color3;
+      font-size: 12px;
+      display: inline-block;
+      width: 70px;
+      height: 40px;
+      border-radius: 7px;
+      color: $color1;
+      margin: 5px;
+      z-index: 0;
+      transition: all 200ms ease;
+
+      &::after {
+        position: absolute;
+        content: "";
+        background: #f2994a;
+        width: 0%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: all 500ms ease;
+        border-radius: 7px;
+      }
+      &:hover {
+        color: #fff;
+      }
+      &:hover::after {
+        width: 100%;
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(200, auto);
+  grid-template-areas:
+    "one two two "
+    "three three four"
+    "five six four";
+  grid-gap: 10px;
+  img {
+    border-radius: 40px;
+  }
+
+  .one {
+    grid-area: one;
+  }
+
+  .two {
+    grid-area: two;
+  }
+  .three {
+    grid-area: three;
+  }
+
+  .four {
+    grid-area: four;
+  }
+  .five {
+    grid-area: five;
+  }
+  .six {
+    grid-area: six;
+  }
+}
+
+@media (min-width: 769px) {
+  .profile__name {
+    text-align: center;
+    p:nth-of-type(1) {
+      font-size: 18px;
+      color: $color1;
+    }
+    p:nth-of-type(2) {
+      font-size: 14px;
+      color: $color2;
+    }
+  }
+}
